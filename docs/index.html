@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>student dashboard</title>
+    <script type="module" crossorigin src="./assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="./assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="./assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="./assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="./assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Bcdzex-3.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.13\"\n# dependencies = [\"altair==6.0.0\", \"marimo\u003E=0.25.2\", \"openpyxl==3.1.5\", \"pandas==3.0.2\", \"pingouin==0.7.0\"]\n# \n# [tool.marimo.export]\n# lock_kind = \"observed\"\n# ///\n\nimport marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"full\")\n\n\n@app.cell\ndef _():\n    import marimo as mo\n    import pandas as pd\n    import altair as alt\n    import pingouin as pg\n\n    return alt, mo, pd, pg\n\n\n@app.cell\ndef _(pd):\n    base_url = \"https://docs.google.com/spreadsheets/d/\"\n    doc_id = \"1JfN7vBpVewr7uvYhm4GltBHQiBmSMyJkvTWT2rMqMko/\"\n    mode = \"export/format=excel\"\n\n    url = base_url + doc_id + mode\n\n    gsheet = pd.ExcelFile(url)\n    mat_df = gsheet.parse(\"mat\")\n    por_df = gsheet.parse(\"por\")\n    return mat_df, por_df\n\n\n@app.cell\ndef _(mat_df, pd, por_df):\n    #Merge Math and Portuguese datasets\n\n    key_cols = [\n        \"school\", \"sex\", \"age\", \"address\", \"famsize\", \"Pstatus\",\n        \"Medu\", \"Fedu\", \"Mjob\", \"Fjob\", \"reason\", \"nursery\", \"internet\"\n    ]\n\n    grade_cols = [\"G1\", \"G2\", \"G3\"]\n\n    df_merged = pd.merge(\n        mat_df[key_cols + grade_cols],\n        por_df[key_cols + grade_cols],\n        on=key_cols,\n        how=\"inner\",\n        suffixes=(\"_mat\", \"_por\")\n    )\n    return (df_merged,)\n\n\n@app.cell\ndef _(df_merged, mat_df, por_df):\n    #Clean datasets and convert category values into readable labels\n\n    def clean_df(df, merged=False):\n\n        schools = {\n            \"GP\": \"Gabriel Pereira\",\n            \"MS\": \"Mousinho da Silveira\"\n        }\n\n        sexes = {\n            \"F\": \"female\",\n            \"M\": \"male\"\n        }\n\n        famsizes = {\n            \"LE3\": \"3 or fewer\",\n            \"GT3\": \"More than 3\"\n        }\n\n        df = df.assign(\n            school=df[\"school\"].map(schools),\n            sex=df[\"sex\"].map(sexes),\n            famsize=df[\"famsize\"].map(famsizes)\n        )\n\n        if merged:\n            relevant_cols = [\"school\", \"sex\", \"famsize\", \"G3_mat\", \"G3_por\"]\n        else:\n            relevant_cols = [\"school\", \"sex\", \"famsize\", \"G3\"]\n\n        return df[relevant_cols]\n\n\n    mat_clean_df = clean_df(mat_df)\n    por_clean_df = clean_df(por_df)\n    both_clean_df = clean_df(df_merged, merged=True)\n    return both_clean_df, mat_clean_df, por_clean_df\n\n\n@app.cell\ndef _(mat_clean_df, mo):\n    #Create interactive dashboard filters\n\n    sex = mo.ui.dropdown(\n        options=[\"both\"] + sorted(mat_clean_df[\"sex\"].unique().tolist()),\n        value=\"both\",\n        label=\"Sex\"\n    )\n\n    school = mo.ui.dropdown(\n        options=[\"both\"] + sorted(mat_clean_df[\"school\"].unique().tolist()),\n        value=\"both\",\n        label=\"School\"\n    )\n\n    famsize = mo.ui.dropdown(\n        options=[\"both\"] + sorted(mat_clean_df[\"famsize\"].unique().tolist()),\n        value=\"both\",\n        label=\"Family size\"\n    )\n\n    subject = mo.ui.radio(\n        options=[\"math\", \"portuguese\", \"both\"],\n        value=\"both\",\n        label=\"Subject\"\n    )\n    return famsize, school, sex, subject\n\n\n@app.cell\ndef _(\n    both_clean_df,\n    famsize,\n    mat_clean_df,\n    por_clean_df,\n    school,\n    sex,\n    subject,\n):\n    # Apply selected filters to the datasets\n\n    if subject.value == \"math\":\n        filtered_df = mat_clean_df.copy()\n        grade_column = \"G3\"\n        subject_label = \"Math\"\n\n    elif subject.value == \"portuguese\":\n        filtered_df = por_clean_df.copy()\n        grade_column = \"G3\"\n        subject_label = \"Portuguese\"\n\n    else:\n        filtered_df = both_clean_df.copy()\n        grade_column = None\n        subject_label = \"Math and Portuguese\"\n\n    if sex.value != \"both\":\n        filtered_df = filtered_df[filtered_df[\"sex\"] == sex.value]\n\n    if school.value != \"both\":\n        filtered_df = filtered_df[filtered_df[\"school\"] == school.value]\n\n    if famsize.value != \"both\":\n        filtered_df = filtered_df[filtered_df[\"famsize\"] == famsize.value]\n    return filtered_df, grade_column, subject_label\n\n\n@app.cell\ndef _(filtered_df, grade_column, subject, subject_label):\n    ##Prepare data for the histogram\n\n    if subject.value == \"both\":\n        plot_df = filtered_df.melt(\n            id_vars=[\"school\", \"sex\", \"famsize\"],\n            value_vars=[\"G3_mat\", \"G3_por\"],\n            var_name=\"subject\",\n            value_name=\"G3\"\n        )\n\n        plot_df[\"subject\"] = plot_df[\"subject\"].map({\n            \"G3_mat\": \"Math\",\n            \"G3_por\": \"Portuguese\"\n        })\n\n    else:\n        plot_df = filtered_df.rename(\n            columns={grade_column: \"G3\"}\n        ).copy()\n\n        plot_df[\"subject\"] = subject_label\n    return (plot_df,)\n\n\n@app.cell\ndef _(alt, filtered_df, plot_df, subject_label):\n    ## Interactive histogram of final grades\n\n    chart = alt.Chart(plot_df).mark_bar(\n        opacity=0.7\n    ).encode(\n        x=alt.X(\n            \"G3:Q\",\n            bin=alt.Bin(step=1),\n            title=\"Final grade (G3)\"\n        ),\n        y=alt.Y(\n            \"count():Q\",\n            title=\"Number of students\"\n        ),\n        color=alt.Color(\n            \"subject:N\",\n            title=\"Subject\"\n        ),\n        tooltip=[\n            alt.Tooltip(\"G3:Q\", bin=alt.Bin(step=1), title=\"Grade\"),\n            alt.Tooltip(\"count():Q\", title=\"Students\"),\n            alt.Tooltip(\"subject:N\", title=\"Subject\")\n        ]\n    ).properties(\n        width=600,\n        height=350,\n        title=f\"Distribution of final grades \u2014 {subject_label} ({len(filtered_df)} students)\"\n    )\n    return (chart,)\n\n\n@app.cell\ndef _(chart, famsize, mo, school, sex, subject, test_panel, test_variable):\n    ##Final Group 5 Dashboard Layout\n\n    header = mo.md(\"\"\"\n    # Group 5 \u00b7 Student Performance Dashboard\n\n    **Members:** Anusha Ponna, Humphrey Chiranda, Muhammad Manzar Zamir\n    \"\"\")\n\n    # Filter section\n    filter_panel = mo.vstack([\n        mo.md(\"### Filters\"),\n        sex,\n        school,\n        famsize,\n        mo.md(\"### Subject\"),\n            subject,\n        mo.md(\"### Statistical comparison\"),\n        test_variable\n    ], gap=1)\n\n    # Chart section\n    chart_panel = mo.vstack([\n        mo.md(\"### Final Grade Distribution\"),\n        chart,\n        mo.md(\"### Statistical results\"),\n        test_panel\n    ], gap=2)\n\n    # Combine filters and chart\n    dashboard = mo.vstack([\n        header,\n        mo.hstack(\n            [filter_panel, chart_panel],\n            widths=[1, 3.5],\n            gap=2,\n            align=\"start\")], gap=2)\n\n    dashboard\n    return\n\n\n@app.cell\ndef _(mo):\n    ###Create the statistical test selector\n\n    test_variable = mo.ui.dropdown(\n        options={\n            \"Sex\": \"sex\",\n            \"School\": \"school\",\n            \"Family size\": \"famsize\",\n        },\n        value=\"Sex\",\n        label=\"Compare final grades by\",\n    )\n\n    test_variable\n    return (test_variable,)\n\n\n@app.cell\ndef _(filtered_df, subject, test_variable):\n    ###Summarise final grades for the selected comparison groups\n\n    if subject.value == \"both\":\n        comparison_summary = filtered_df.groupby(\n            test_variable.value\n        ).agg(\n            Students=(\"G3_mat\", \"count\"),\n            Math_mean=(\"G3_mat\", \"mean\"),\n            Portuguese_mean=(\"G3_por\", \"mean\")\n        ).round(2)\n\n    else:\n        comparison_summary = filtered_df.groupby(\n            test_variable.value\n        ).agg(\n            Students=(\"G3\", \"count\"),\n            Mean_grade=(\"G3\", \"mean\")\n        ).round(2)\n\n    comparison_summary\n    return\n\n\n@app.cell\ndef _(filtered_df, pg, subject, test_variable):\n    ###Check normality within each comparison group\n\n    _grade_cols = (\n        [\"G3_mat\", \"G3_por\"]\n        if subject.value == \"both\"\n        else [\"G3\"]\n    )\n\n    normality_results = {\n        _col: pg.normality(\n            data=filtered_df,\n            dv=_col,\n            group=test_variable.value\n        )\n        for _col in _grade_cols\n    }\n\n    normality_results\n    return\n\n\n@app.cell\ndef _(filtered_df, pg, subject, test_variable):\n    ###Select and run the appropriate group comparison\n\n    test_results = {}\n    test_methods = {}\n\n    _columns = (\n        [\"G3_mat\", \"G3_por\"]\n        if subject.value == \"both\"\n        else [\"G3\"]\n    )\n\n    for _column in _columns:\n        _groups = [\n            _data[_column].dropna()\n            for _, _data in filtered_df.groupby(test_variable.value)\n        ]\n\n        if len(_groups) != 2:\n            test_results[_column] = \"Select both groups for comparison.\"\n            continue\n\n        if min(map(len, _groups)) \u003C 3:\n            test_results[_column] = \"At least 3 students per group are needed.\"\n            continue\n\n        if all(_g.var() == 0 for _g in _groups):\n            test_results[_column] = \"No within-group variation; test unavailable.\"\n            continue\n\n        _large = min(map(len, _groups)) \u003E= 30\n        _normal = all(\n            _g.nunique() \u003E 1\n            and bool(pg.normality(_g)[\"normal\"].iloc[0])\n            for _g in _groups\n        )\n\n        if _large or _normal:\n            test_methods[_column] = \"Welch\"\n            test_results[_column] = pg.ttest(\n                *_groups, paired=False, correction=True\n            )\n        else:\n            test_methods[_column] = \"Mann\u2013Whitney\"\n            test_results[_column] = pg.mwu(\n                *_groups, alternative=\"two-sided\"\n            )\n\n    test_results\n    return test_methods, test_results\n\n\n@app.cell\ndef _(\n    filtered_df,\n    mo,\n    subject_label,\n    test_methods,\n    test_results,\n    test_variable,\n):\n    ###Explain the selected tests and their results\n\n    _messages = []\n\n    for _column, _result in test_results.items():\n        _name = {\n            \"G3_mat\": \"Math\",\n            \"G3_por\": \"Portuguese\"\n        }.get(_column, subject_label)\n\n        if isinstance(_result, str):\n            _messages.append(mo.callout(f\"{_name}: {_result}\", kind=\"warn\"))\n            continue\n\n        _summary = filtered_df.groupby(test_variable.value)[_column].agg(\n            [\"count\", \"mean\"]\n        )\n        _method = test_methods[_column]\n        _p_col = \"p_val\" if \"p_val\" in _result.columns else \"p-val\"\n        _p = float(_result[_p_col].iloc[0])\n\n        _details = \"; \".join(\n            f\"{_group}: mean {_row['mean']:.2f}/20 \"\n            f\"(n = {int(_row['count'])})\"\n            for _group, _row in _summary.iterrows()\n        )\n\n        if _method == \"Welch\":\n            _target = \"mean grades\"\n            _reason = (\n                \"Both groups have at least 30 students.\"\n                if _summary[\"count\"].min() \u003E= 30\n                else \"Neither group showed clear evidence against normality.\"\n            )\n            _reason += \" Welch\u2019s t-test allows unequal variances.\"\n        else:\n            _target = \"grade ranks\"\n            _reason = (\n                \"At least one group is small and normality was not supported. \"\n                \"Mann\u2013Whitney compares ranks, not means.\"\n            )\n\n        _finding = (\n            \"a statistically significant difference\"\n            if _p \u003C 0.05\n            else \"insufficient evidence of a difference\"\n        )\n\n        _messages.append(mo.md(\n            f\"**{_name} \u2014 {_method} test:** {_details}. \"\n            f\"We found {_finding} in {_target} \"\n            f\"(p = {_p:.4f}; 5% significance level). \"\n            f\"**Why this test?** {_reason}\"\n        ))\n\n    test_panel = mo.vstack(_messages)\n    test_panel\n    return (test_panel,)\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.13%22%0A%23%20dependencies%20%3D%20%5B%22altair%3D%3D6.0.0%22%2C%20%22marimo%3E%3D0.25.2%22%2C%20%22openpyxl%3D%3D3.1.5%22%2C%20%22pandas%3D%3D3.0.2%22%2C%20%22pingouin%3D%3D0.7.0%22%5D%0A%23%20%0A%23%20%5Btool.marimo.export%5D%0A%23%20lock_kind%20%3D%20%22observed%22%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22full%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20altair%20as%20alt%0A%20%20%20%20import%20pingouin%20as%20pg%0A%0A%20%20%20%20return%20alt%2C%20mo%2C%20pd%2C%20pg%0A%0A%0A%40app.cell%0Adef%20_(pd)%3A%0A%20%20%20%20base_url%20%3D%20%22https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F%22%0A%20%20%20%20doc_id%20%3D%20%221JfN7vBpVewr7uvYhm4GltBHQiBmSMyJkvTWT2rMqMko%2F%22%0A%20%20%20%20mode%20%3D%20%22export%2Fformat%3Dexcel%22%0A%0A%20%20%20%20url%20%3D%20base_url%20%2B%20doc_id%20%2B%20mode%0A%0A%20%20%20%20gsheet%20%3D%20pd.ExcelFile(url)%0A%20%20%20%20mat_df%20%3D%20gsheet.parse(%22mat%22)%0A%20%20%20%20por_df%20%3D%20gsheet.parse(%22por%22)%0A%20%20%20%20return%20mat_df%2C%20por_df%0A%0A%0A%40app.cell%0Adef%20_(mat_df%2C%20pd%2C%20por_df)%3A%0A%20%20%20%20%23Merge%20Math%20and%20Portuguese%20datasets%0A%0A%20%20%20%20key_cols%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%22school%22%2C%20%22sex%22%2C%20%22age%22%2C%20%22address%22%2C%20%22famsize%22%2C%20%22Pstatus%22%2C%0A%20%20%20%20%20%20%20%20%22Medu%22%2C%20%22Fedu%22%2C%20%22Mjob%22%2C%20%22Fjob%22%2C%20%22reason%22%2C%20%22nursery%22%2C%20%22internet%22%0A%20%20%20%20%5D%0A%0A%20%20%20%20grade_cols%20%3D%20%5B%22G1%22%2C%20%22G2%22%2C%20%22G3%22%5D%0A%0A%20%20%20%20df_merged%20%3D%20pd.merge(%0A%20%20%20%20%20%20%20%20mat_df%5Bkey_cols%20%2B%20grade_cols%5D%2C%0A%20%20%20%20%20%20%20%20por_df%5Bkey_cols%20%2B%20grade_cols%5D%2C%0A%20%20%20%20%20%20%20%20on%3Dkey_cols%2C%0A%20%20%20%20%20%20%20%20how%3D%22inner%22%2C%0A%20%20%20%20%20%20%20%20suffixes%3D(%22_mat%22%2C%20%22_por%22)%0A%20%20%20%20)%0A%20%20%20%20return%20(df_merged%2C)%0A%0A%0A%40app.cell%0Adef%20_(df_merged%2C%20mat_df%2C%20por_df)%3A%0A%20%20%20%20%23Clean%20datasets%20and%20convert%20category%20values%20into%20readable%20labels%0A%0A%20%20%20%20def%20clean_df(df%2C%20merged%3DFalse)%3A%0A%0A%20%20%20%20%20%20%20%20schools%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22GP%22%3A%20%22Gabriel%20Pereira%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22MS%22%3A%20%22Mousinho%20da%20Silveira%22%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20sexes%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22F%22%3A%20%22female%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22M%22%3A%20%22male%22%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20famsizes%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22LE3%22%3A%20%223%20or%20fewer%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22GT3%22%3A%20%22More%20than%203%22%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20df%20%3D%20df.assign(%0A%20%20%20%20%20%20%20%20%20%20%20%20school%3Ddf%5B%22school%22%5D.map(schools)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20sex%3Ddf%5B%22sex%22%5D.map(sexes)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20famsize%3Ddf%5B%22famsize%22%5D.map(famsizes)%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20if%20merged%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20relevant_cols%20%3D%20%5B%22school%22%2C%20%22sex%22%2C%20%22famsize%22%2C%20%22G3_mat%22%2C%20%22G3_por%22%5D%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20relevant_cols%20%3D%20%5B%22school%22%2C%20%22sex%22%2C%20%22famsize%22%2C%20%22G3%22%5D%0A%0A%20%20%20%20%20%20%20%20return%20df%5Brelevant_cols%5D%0A%0A%0A%20%20%20%20mat_clean_df%20%3D%20clean_df(mat_df)%0A%20%20%20%20por_clean_df%20%3D%20clean_df(por_df)%0A%20%20%20%20both_clean_df%20%3D%20clean_df(df_merged%2C%20merged%3DTrue)%0A%20%20%20%20return%20both_clean_df%2C%20mat_clean_df%2C%20por_clean_df%0A%0A%0A%40app.cell%0Adef%20_(mat_clean_df%2C%20mo)%3A%0A%20%20%20%20%23Create%20interactive%20dashboard%20filters%0A%0A%20%20%20%20sex%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%5B%22both%22%5D%20%2B%20sorted(mat_clean_df%5B%22sex%22%5D.unique().tolist())%2C%0A%20%20%20%20%20%20%20%20value%3D%22both%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22Sex%22%0A%20%20%20%20)%0A%0A%20%20%20%20school%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%5B%22both%22%5D%20%2B%20sorted(mat_clean_df%5B%22school%22%5D.unique().tolist())%2C%0A%20%20%20%20%20%20%20%20value%3D%22both%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22School%22%0A%20%20%20%20)%0A%0A%20%20%20%20famsize%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%5B%22both%22%5D%20%2B%20sorted(mat_clean_df%5B%22famsize%22%5D.unique().tolist())%2C%0A%20%20%20%20%20%20%20%20value%3D%22both%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22Family%20size%22%0A%20%20%20%20)%0A%0A%20%20%20%20subject%20%3D%20mo.ui.radio(%0A%20%20%20%20%20%20%20%20options%3D%5B%22math%22%2C%20%22portuguese%22%2C%20%22both%22%5D%2C%0A%20%20%20%20%20%20%20%20value%3D%22both%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22Subject%22%0A%20%20%20%20)%0A%20%20%20%20return%20famsize%2C%20school%2C%20sex%2C%20subject%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20both_clean_df%2C%0A%20%20%20%20famsize%2C%0A%20%20%20%20mat_clean_df%2C%0A%20%20%20%20por_clean_df%2C%0A%20%20%20%20school%2C%0A%20%20%20%20sex%2C%0A%20%20%20%20subject%2C%0A)%3A%0A%20%20%20%20%23%20Apply%20selected%20filters%20to%20the%20datasets%0A%0A%20%20%20%20if%20subject.value%20%3D%3D%20%22math%22%3A%0A%20%20%20%20%20%20%20%20filtered_df%20%3D%20mat_clean_df.copy()%0A%20%20%20%20%20%20%20%20grade_column%20%3D%20%22G3%22%0A%20%20%20%20%20%20%20%20subject_label%20%3D%20%22Math%22%0A%0A%20%20%20%20elif%20subject.value%20%3D%3D%20%22portuguese%22%3A%0A%20%20%20%20%20%20%20%20filtered_df%20%3D%20por_clean_df.copy()%0A%20%20%20%20%20%20%20%20grade_column%20%3D%20%22G3%22%0A%20%20%20%20%20%20%20%20subject_label%20%3D%20%22Portuguese%22%0A%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20filtered_df%20%3D%20both_clean_df.copy()%0A%20%20%20%20%20%20%20%20grade_column%20%3D%20None%0A%20%20%20%20%20%20%20%20subject_label%20%3D%20%22Math%20and%20Portuguese%22%0A%0A%20%20%20%20if%20sex.value%20!%3D%20%22both%22%3A%0A%20%20%20%20%20%20%20%20filtered_df%20%3D%20filtered_df%5Bfiltered_df%5B%22sex%22%5D%20%3D%3D%20sex.value%5D%0A%0A%20%20%20%20if%20school.value%20!%3D%20%22both%22%3A%0A%20%20%20%20%20%20%20%20filtered_df%20%3D%20filtered_df%5Bfiltered_df%5B%22school%22%5D%20%3D%3D%20school.value%5D%0A%0A%20%20%20%20if%20famsize.value%20!%3D%20%22both%22%3A%0A%20%20%20%20%20%20%20%20filtered_df%20%3D%20filtered_df%5Bfiltered_df%5B%22famsize%22%5D%20%3D%3D%20famsize.value%5D%0A%20%20%20%20return%20filtered_df%2C%20grade_column%2C%20subject_label%0A%0A%0A%40app.cell%0Adef%20_(filtered_df%2C%20grade_column%2C%20subject%2C%20subject_label)%3A%0A%20%20%20%20%23%23Prepare%20data%20for%20the%20histogram%0A%0A%20%20%20%20if%20subject.value%20%3D%3D%20%22both%22%3A%0A%20%20%20%20%20%20%20%20plot_df%20%3D%20filtered_df.melt(%0A%20%20%20%20%20%20%20%20%20%20%20%20id_vars%3D%5B%22school%22%2C%20%22sex%22%2C%20%22famsize%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20value_vars%3D%5B%22G3_mat%22%2C%20%22G3_por%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20var_name%3D%22subject%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20value_name%3D%22G3%22%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20plot_df%5B%22subject%22%5D%20%3D%20plot_df%5B%22subject%22%5D.map(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22G3_mat%22%3A%20%22Math%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22G3_por%22%3A%20%22Portuguese%22%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20plot_df%20%3D%20filtered_df.rename(%0A%20%20%20%20%20%20%20%20%20%20%20%20columns%3D%7Bgrade_column%3A%20%22G3%22%7D%0A%20%20%20%20%20%20%20%20).copy()%0A%0A%20%20%20%20%20%20%20%20plot_df%5B%22subject%22%5D%20%3D%20subject_label%0A%20%20%20%20return%20(plot_df%2C)%0A%0A%0A%40app.cell%0Adef%20_(alt%2C%20filtered_df%2C%20plot_df%2C%20subject_label)%3A%0A%20%20%20%20%23%23%20Interactive%20histogram%20of%20final%20grades%0A%0A%20%20%20%20chart%20%3D%20alt.Chart(plot_df).mark_bar(%0A%20%20%20%20%20%20%20%20opacity%3D0.7%0A%20%20%20%20).encode(%0A%20%20%20%20%20%20%20%20x%3Dalt.X(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22G3%3AQ%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20bin%3Dalt.Bin(step%3D1)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20title%3D%22Final%20grade%20(G3)%22%0A%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20y%3Dalt.Y(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22count()%3AQ%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20title%3D%22Number%20of%20students%22%0A%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20color%3Dalt.Color(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22subject%3AN%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20title%3D%22Subject%22%0A%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20tooltip%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22G3%3AQ%22%2C%20bin%3Dalt.Bin(step%3D1)%2C%20title%3D%22Grade%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22count()%3AQ%22%2C%20title%3D%22Students%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22subject%3AN%22%2C%20title%3D%22Subject%22)%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20).properties(%0A%20%20%20%20%20%20%20%20width%3D600%2C%0A%20%20%20%20%20%20%20%20height%3D350%2C%0A%20%20%20%20%20%20%20%20title%3Df%22Distribution%20of%20final%20grades%20%E2%80%94%20%7Bsubject_label%7D%20(%7Blen(filtered_df)%7D%20students)%22%0A%20%20%20%20)%0A%20%20%20%20return%20(chart%2C)%0A%0A%0A%40app.cell%0Adef%20_(chart%2C%20famsize%2C%20mo%2C%20school%2C%20sex%2C%20subject%2C%20test_panel%2C%20test_variable)%3A%0A%20%20%20%20%23%23Final%20Group%205%20Dashboard%20Layout%0A%0A%20%20%20%20header%20%3D%20mo.md(%22%22%22%0A%20%20%20%20%23%20Group%205%20%C2%B7%20Student%20Performance%20Dashboard%0A%0A%20%20%20%20**Members%3A**%20Anusha%20Ponna%2C%20Humphrey%20Chiranda%2C%20Muhammad%20Manzar%20Zamir%0A%20%20%20%20%22%22%22)%0A%0A%20%20%20%20%23%20Filter%20section%0A%20%20%20%20filter_panel%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Filters%22)%2C%0A%20%20%20%20%20%20%20%20sex%2C%0A%20%20%20%20%20%20%20%20school%2C%0A%20%20%20%20%20%20%20%20famsize%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Subject%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20subject%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Statistical%20comparison%22)%2C%0A%20%20%20%20%20%20%20%20test_variable%0A%20%20%20%20%5D%2C%20gap%3D1)%0A%0A%20%20%20%20%23%20Chart%20section%0A%20%20%20%20chart_panel%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Final%20Grade%20Distribution%22)%2C%0A%20%20%20%20%20%20%20%20chart%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Statistical%20results%22)%2C%0A%20%20%20%20%20%20%20%20test_panel%0A%20%20%20%20%5D%2C%20gap%3D2)%0A%0A%20%20%20%20%23%20Combine%20filters%20and%20chart%0A%20%20%20%20dashboard%20%3D%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20header%2C%0A%20%20%20%20%20%20%20%20mo.hstack(%0A%20%20%20%20%20%20%20%20%20%20%20%20%5Bfilter_panel%2C%20chart_panel%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20widths%3D%5B1%2C%203.5%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3D2%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20align%3D%22start%22)%5D%2C%20gap%3D2)%0A%0A%20%20%20%20dashboard%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20%23%23%23Create%20the%20statistical%20test%20selector%0A%0A%20%20%20%20test_variable%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Sex%22%3A%20%22sex%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22School%22%3A%20%22school%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Family%20size%22%3A%20%22famsize%22%2C%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20value%3D%22Sex%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22Compare%20final%20grades%20by%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20test_variable%0A%20%20%20%20return%20(test_variable%2C)%0A%0A%0A%40app.cell%0Adef%20_(filtered_df%2C%20subject%2C%20test_variable)%3A%0A%20%20%20%20%23%23%23Summarise%20final%20grades%20for%20the%20selected%20comparison%20groups%0A%0A%20%20%20%20if%20subject.value%20%3D%3D%20%22both%22%3A%0A%20%20%20%20%20%20%20%20comparison_summary%20%3D%20filtered_df.groupby(%0A%20%20%20%20%20%20%20%20%20%20%20%20test_variable.value%0A%20%20%20%20%20%20%20%20).agg(%0A%20%20%20%20%20%20%20%20%20%20%20%20Students%3D(%22G3_mat%22%2C%20%22count%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20Math_mean%3D(%22G3_mat%22%2C%20%22mean%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20Portuguese_mean%3D(%22G3_por%22%2C%20%22mean%22)%0A%20%20%20%20%20%20%20%20).round(2)%0A%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20comparison_summary%20%3D%20filtered_df.groupby(%0A%20%20%20%20%20%20%20%20%20%20%20%20test_variable.value%0A%20%20%20%20%20%20%20%20).agg(%0A%20%20%20%20%20%20%20%20%20%20%20%20Students%3D(%22G3%22%2C%20%22count%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20Mean_grade%3D(%22G3%22%2C%20%22mean%22)%0A%20%20%20%20%20%20%20%20).round(2)%0A%0A%20%20%20%20comparison_summary%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(filtered_df%2C%20pg%2C%20subject%2C%20test_variable)%3A%0A%20%20%20%20%23%23%23Check%20normality%20within%20each%20comparison%20group%0A%0A%20%20%20%20_grade_cols%20%3D%20(%0A%20%20%20%20%20%20%20%20%5B%22G3_mat%22%2C%20%22G3_por%22%5D%0A%20%20%20%20%20%20%20%20if%20subject.value%20%3D%3D%20%22both%22%0A%20%20%20%20%20%20%20%20else%20%5B%22G3%22%5D%0A%20%20%20%20)%0A%0A%20%20%20%20normality_results%20%3D%20%7B%0A%20%20%20%20%20%20%20%20_col%3A%20pg.normality(%0A%20%20%20%20%20%20%20%20%20%20%20%20data%3Dfiltered_df%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20dv%3D_col%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20group%3Dtest_variable.value%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20for%20_col%20in%20_grade_cols%0A%20%20%20%20%7D%0A%0A%20%20%20%20normality_results%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(filtered_df%2C%20pg%2C%20subject%2C%20test_variable)%3A%0A%20%20%20%20%23%23%23Select%20and%20run%20the%20appropriate%20group%20comparison%0A%0A%20%20%20%20test_results%20%3D%20%7B%7D%0A%20%20%20%20test_methods%20%3D%20%7B%7D%0A%0A%20%20%20%20_columns%20%3D%20(%0A%20%20%20%20%20%20%20%20%5B%22G3_mat%22%2C%20%22G3_por%22%5D%0A%20%20%20%20%20%20%20%20if%20subject.value%20%3D%3D%20%22both%22%0A%20%20%20%20%20%20%20%20else%20%5B%22G3%22%5D%0A%20%20%20%20)%0A%0A%20%20%20%20for%20_column%20in%20_columns%3A%0A%20%20%20%20%20%20%20%20_groups%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20_data%5B_column%5D.dropna()%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20_%2C%20_data%20in%20filtered_df.groupby(test_variable.value)%0A%20%20%20%20%20%20%20%20%5D%0A%0A%20%20%20%20%20%20%20%20if%20len(_groups)%20!%3D%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20test_results%5B_column%5D%20%3D%20%22Select%20both%20groups%20for%20comparison.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20if%20min(map(len%2C%20_groups))%20%3C%203%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20test_results%5B_column%5D%20%3D%20%22At%20least%203%20students%20per%20group%20are%20needed.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20if%20all(_g.var()%20%3D%3D%200%20for%20_g%20in%20_groups)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20test_results%5B_column%5D%20%3D%20%22No%20within-group%20variation%3B%20test%20unavailable.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20_large%20%3D%20min(map(len%2C%20_groups))%20%3E%3D%2030%0A%20%20%20%20%20%20%20%20_normal%20%3D%20all(%0A%20%20%20%20%20%20%20%20%20%20%20%20_g.nunique()%20%3E%201%0A%20%20%20%20%20%20%20%20%20%20%20%20and%20bool(pg.normality(_g)%5B%22normal%22%5D.iloc%5B0%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20_g%20in%20_groups%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20if%20_large%20or%20_normal%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20test_methods%5B_column%5D%20%3D%20%22Welch%22%0A%20%20%20%20%20%20%20%20%20%20%20%20test_results%5B_column%5D%20%3D%20pg.ttest(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20*_groups%2C%20paired%3DFalse%2C%20correction%3DTrue%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20test_methods%5B_column%5D%20%3D%20%22Mann%E2%80%93Whitney%22%0A%20%20%20%20%20%20%20%20%20%20%20%20test_results%5B_column%5D%20%3D%20pg.mwu(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20*_groups%2C%20alternative%3D%22two-sided%22%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20test_results%0A%20%20%20%20return%20test_methods%2C%20test_results%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20filtered_df%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20subject_label%2C%0A%20%20%20%20test_methods%2C%0A%20%20%20%20test_results%2C%0A%20%20%20%20test_variable%2C%0A)%3A%0A%20%20%20%20%23%23%23Explain%20the%20selected%20tests%20and%20their%20results%0A%0A%20%20%20%20_messages%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20_column%2C%20_result%20in%20test_results.items()%3A%0A%20%20%20%20%20%20%20%20_name%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22G3_mat%22%3A%20%22Math%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22G3_por%22%3A%20%22Portuguese%22%0A%20%20%20%20%20%20%20%20%7D.get(_column%2C%20subject_label)%0A%0A%20%20%20%20%20%20%20%20if%20isinstance(_result%2C%20str)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_messages.append(mo.callout(f%22%7B_name%7D%3A%20%7B_result%7D%22%2C%20kind%3D%22warn%22))%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20_summary%20%3D%20filtered_df.groupby(test_variable.value)%5B_column%5D.agg(%0A%20%20%20%20%20%20%20%20%20%20%20%20%5B%22count%22%2C%20%22mean%22%5D%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20_method%20%3D%20test_methods%5B_column%5D%0A%20%20%20%20%20%20%20%20_p_col%20%3D%20%22p_val%22%20if%20%22p_val%22%20in%20_result.columns%20else%20%22p-val%22%0A%20%20%20%20%20%20%20%20_p%20%3D%20float(_result%5B_p_col%5D.iloc%5B0%5D)%0A%0A%20%20%20%20%20%20%20%20_details%20%3D%20%22%3B%20%22.join(%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22%7B_group%7D%3A%20mean%20%7B_row%5B'mean'%5D%3A.2f%7D%2F20%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22(n%20%3D%20%7Bint(_row%5B'count'%5D)%7D)%22%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20_group%2C%20_row%20in%20_summary.iterrows()%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20if%20_method%20%3D%3D%20%22Welch%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_target%20%3D%20%22mean%20grades%22%0A%20%20%20%20%20%20%20%20%20%20%20%20_reason%20%3D%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Both%20groups%20have%20at%20least%2030%20students.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20_summary%5B%22count%22%5D.min()%20%3E%3D%2030%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20else%20%22Neither%20group%20showed%20clear%20evidence%20against%20normality.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20%20%20%20%20_reason%20%2B%3D%20%22%20Welch%E2%80%99s%20t-test%20allows%20unequal%20variances.%22%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_target%20%3D%20%22grade%20ranks%22%0A%20%20%20%20%20%20%20%20%20%20%20%20_reason%20%3D%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22At%20least%20one%20group%20is%20small%20and%20normality%20was%20not%20supported.%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Mann%E2%80%93Whitney%20compares%20ranks%2C%20not%20means.%22%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20_finding%20%3D%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22a%20statistically%20significant%20difference%22%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20_p%20%3C%200.05%0A%20%20%20%20%20%20%20%20%20%20%20%20else%20%22insufficient%20evidence%20of%20a%20difference%22%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20_messages.append(mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22**%7B_name%7D%20%E2%80%94%20%7B_method%7D%20test%3A**%20%7B_details%7D.%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22We%20found%20%7B_finding%7D%20in%20%7B_target%7D%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22(p%20%3D%20%7B_p%3A.4f%7D%3B%205%25%20significance%20level).%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22**Why%20this%20test%3F**%20%7B_reason%7D%22%0A%20%20%20%20%20%20%20%20))%0A%0A%20%20%20%20test_panel%20%3D%20mo.vstack(_messages)%0A%20%20%20%20test_panel%0A%20%20%20%20return%20(test_panel%2C)%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "uv"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "full"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
